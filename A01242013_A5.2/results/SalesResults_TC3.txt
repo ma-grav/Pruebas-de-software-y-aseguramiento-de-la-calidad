@@ -1,0 +1,4 @@
+Results for TC3.Sales.json
+
+TOTAL SALES: 165235.37
+TIME: 0.019752000000153203 seconds
