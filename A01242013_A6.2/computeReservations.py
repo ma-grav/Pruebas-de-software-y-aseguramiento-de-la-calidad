@@ -40,7 +40,8 @@ class ManageHotel:
     def __init__(self, f):
         self.FILE = f
 
-    def create_hotel(self, new_hotel):
+    def create_hotel(self, id, name):
+        new_hotel = {'hotel_id': id, 'hotel_name': name}
         hotels_data = load_file(self.FILE)
         hotels_data.append(new_hotel)
         save_file(self.FILE, hotels_data)
@@ -106,10 +107,10 @@ class ManageCustomer:
     def __init__(self, f):
         self.FILE = f
 
-    def create_customer(self, new_cust):
+    def create_customer(self, id, name, email):
+        new_cust = {'customer_id': id, 'customer_name': name, 'email': email}
         cust_data = load_file(self.FILE)
-
-        cust_data.append()
+        cust_data.append(new_cust)
         save_file(self.FILE, cust_data)
 
     def delete_customer(self, cust_id):
@@ -180,7 +181,8 @@ class ManageReservation:
     def __init__(self, f):
         self.FILE = f
 
-    def new_reservation(self, new_resrv):
+    def new_reservation(self, resrv_id, room, cust_id, hotel_id):
+        new_resrv = {'reservation_id': resrv_id, 'room_num': room, 'customer_id': cust_id, 'hotel_id': hotel_id}
         resrv_data = load_file(self.FILE)
         resrv_data.append(new_resrv)
         save_file(self.FILE, resrv_data)
