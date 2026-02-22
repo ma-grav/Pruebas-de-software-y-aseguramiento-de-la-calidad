@@ -1,6 +1,5 @@
 """Program that manages Hotels and their inherent activities"""
 
-import argparse
 from abc import ABC, abstractmethod
 import json
 
@@ -46,7 +45,7 @@ class ManageHotel:
 
     def create_hotel(self, h_id, name):
         """Function create a new hotel"""
-        new_hotel = {'hotel_id': h_id, 'hotel_name': name}
+        new_hotel = {"hotel_id": h_id, "name": name}
         hotels_data = load_file(self.file)
         hotels_data.append(new_hotel)
         save_file(self.file, hotels_data)
@@ -55,14 +54,16 @@ class ManageHotel:
         """Function delete a hotel"""
         hotels_data = load_file(self.file)
 
-        for x in hotels_data:
-            hotel_exists = any(x['name'] == hotel_name for h in hotels_data)
+        hotel_exists = any(h['name'] == hotel_name for h in hotels_data)
 
-            if hotel_exists:
-                if x['name'] == hotel_name:
+        if hotel_exists:
+            for x in enumerate(hotels_data):
+
+                if hotels_data[x]['name'] == hotel_name:
                     hotels_data.pop(x)
-            else:
-                print(f"Hotel {hotel_name} does not exist.")
+                break
+        else:
+            print(f"Customer {hotel_name} does not exist.")
 
         save_file(self.file, hotels_data)
 
@@ -70,27 +71,31 @@ class ManageHotel:
         """Function to print the information from a hotel"""
         hotels_data = load_file(self.file)
 
-        for x in hotels_data:
-            hotel_exists = any(x['name'] == hotel_name for h in hotels_data)
+        hotel_exists = any(h['name'] == hotel_name for h in hotels_data)
 
-            if hotel_exists:
-                if x['name'] == hotel_name:
+        if hotel_exists:
+            for x in enumerate(hotels_data):
+
+                if hotels_data[x]['name'] == hotel_name:
                     print(x)
-            else:
-                print(f"Hotel {hotel_name} does not exist.")
+                break
+        else:
+            print(f"Customer {hotel_name} does not exist.")
 
     def modify_hotel(self, hotel_id, new_hotel_name):
         """Function modify a hotel's data"""
         hotels_data = load_file(self.file)
 
-        for x in hotels_data:
-            hotel_exists = any(x['id'] == hotel_id for hotel in hotels_data)
+        hotel_exists = any(h['hotel_id'] == hotel_id for h in hotels_data)
 
-            if hotel_exists:
-                if x['id'] == hotel_id:
-                    hotels_data.update({'name': new_hotel_name})
-            else:
-                print(f"Hotel {hotel_id} does not exist.")
+        if hotel_exists:
+            for x in enumerate(hotels_data):
+
+                if hotels_data[x]['hotel_id'] == hotel_id:
+                    hotels_data[x].update({"name": new_hotel_name})
+                break
+        else:
+            print(f"Customer {hotel_id} does not exist.")
 
         save_file(self.file, hotels_data)
 
@@ -115,7 +120,7 @@ class ManageCustomer:
 
     def create_customer(self, c_id, name, email):
         """Function create a new customer"""
-        new_cust = {'customer_id': c_id, 'customer_name': name, 'email': email}
+        new_cust = {"customer_id": c_id, "customer_name": name, "email": email}
         cust_data = load_file(self.file)
         cust_data.append(new_cust)
         save_file(self.file, cust_data)
@@ -124,14 +129,16 @@ class ManageCustomer:
         """Function to delete a customer"""
         cust_data = load_file(self.file)
 
-        for x in cust_data:
-            cust_exists = any(x['customer_id'] == cust_id for c in cust_data)
+        cust_exists = any(c['customer_id'] == cust_id for c in cust_data)
 
-            if cust_exists:
-                if x['customer_id'] == cust_id:
+        if cust_exists:
+            for x in enumerate(cust_data):
+
+                if cust_data[x]['customer_id'] == cust_id:
                     cust_data.pop(x)
-            else:
-                print(f"Customer {cust_id} does not exist.")
+                break
+        else:
+            print(f"Customer {cust_id} does not exist.")
 
         save_file(self.file, cust_data)
 
@@ -139,28 +146,32 @@ class ManageCustomer:
         """Function to print a customer's data"""
         cust_data = load_file(self.file)
 
-        for x in cust_data:
-            cust_exists = any(x['customer_id'] == cust_id for c in cust_data)
+        cust_exists = any(c['customer_id'] == cust_id for c in cust_data)
 
-            if cust_exists:
-                if x['customer_id'] == cust_id:
+        if cust_exists:
+            for x in enumerate(cust_data):
+
+                if cust_data[x]['customer_id'] == cust_id:
                     print(x)
-            else:
-                print(f"Customer {cust_id} does not exist.")
+                break
+        else:
+            print(f"Customer {cust_id} does not exist.")
 
     def modify_customer(self, cust_id, new_name, new_email):
         """Function to modify a customer's data"""
         cust_data = load_file(self.file)
 
-        for x in cust_data:
-            cust_exists = any(x['customer_id'] == cust_id for c in cust_data)
+        cust_exists = any(c['customer_id'] == cust_id for c in cust_data)
 
-            if cust_exists:
-                if x['customer_id'] == cust_id:
-                    cust_data.cust_data.update({'customer_name': new_name},
-                                               {'email': new_email})
-            else:
-                print(f"Customer {cust_id} does not exist.")
+        if cust_exists:
+            for x in enumerate(cust_data):
+
+                if cust_data[x]['customer_id'] == cust_id:
+                    cust_data[x].update({"customer_name": new_name,
+                                        "email": new_email})
+                break
+        else:
+            print(f"Customer {cust_id} does not exist.")
 
         save_file(self.file, cust_data)
 
@@ -192,8 +203,8 @@ class ManageReservation:
 
     def new_reservation(self, resrv_id, room, cust_id, hotel_id):
         """Function to create a new reservation"""
-        new_resrv = {'reservation_id': resrv_id, 'room_num': room,
-                     'customer_id': cust_id, 'hotel_id': hotel_id}
+        new_resrv = {"reservation_id": resrv_id, "room_num": room,
+                     "customer_id": cust_id, "hotel_id": hotel_id}
         resrv_data = load_file(self.file)
         resrv_data.append(new_resrv)
         save_file(self.file, resrv_data)
@@ -202,26 +213,16 @@ class ManageReservation:
         """Function to cancel a reservation, in this case it is deleted"""
         resrv_data = load_file(self.file)
 
-        for x in resrv_data:
-            resrv_exists = any(x['reservation_id'] == resrv_id for r
-                               in resrv_data)
+        resrv_exists = any(r['reservation_id'] == resrv_id for r
+                           in resrv_data)
 
-            if resrv_exists:
-                if x['reservation_id'] == resrv_id:
+        if resrv_exists:
+            for x in enumerate(resrv_data):
+
+                if resrv_data[x]['hotel_id'] == resrv_id:
                     resrv_data.pop(x)
-            else:
-                print(f"Reservation {resrv_id} does not exist.")
+                break
+        else:
+            print(f"Customer {resrv_id} does not exist.")
 
         save_file(self.file, resrv_data)
-
-
-parser = argparse.ArgumentParser(description="Process hotel files")
-parser.add_argument("hotel_file", help="Name of the hotels file")
-parser.add_argument("reserv_file", help="Name of the reservations file")
-parser.add_argument("customer_file", help="Name of the customers file")
-
-input_file = parser.parse_args()
-
-hotel_admin = ManageHotel(input_file.hotel_file)
-reserv_admin = ManageReservation(input_file.reserv_file)
-cust_admin = ManageCustomer(input_file.customer_file)

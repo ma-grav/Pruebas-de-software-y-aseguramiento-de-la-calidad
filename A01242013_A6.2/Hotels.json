@@ -1,0 +1,14 @@
+[
+    {
+        "hotel_id": 1,
+        "name": "Hilton"
+    },
+    {
+        "hotel_id": 2,
+        "name": "Fiesta Inn"
+    },
+    {
+        "hotel_id": 3,
+        "name": "City Express"
+    }
+]
