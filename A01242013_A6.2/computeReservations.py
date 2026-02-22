@@ -46,14 +46,48 @@ class ManageHotel:
         save_file(self.FILE, hotels_data)
 
 
-    def delete_hotel(self):
-        pass
+    def delete_hotel(self, hotel_name):
+        hotels_data = load_file(self.FILE)
+        
+        for x in hotels_data:
+            hotel_exists = any(x['name'] == hotel_name for hotel in hotels_data)
 
-    def hotel_info(self):
-        pass
+            if hotel_exists:
+               if x['name'] == hotel_name:
+                    hotels_data.pop(x)
+            else:
+                print(f"Hotel {hotel_name} does not exist.")
 
-    def modify_hotel(self):
-        pass
+        save_file(self.FILE, hotels_data)
+
+    def hotel_info(self, hotel_name):
+        hotels_data = load_file(self.FILE)
+        
+        for x in hotels_data:
+            hotel_exists = any(x['name'] == hotel_name for hotel in hotels_data)
+
+            if hotel_exists:
+               if x['name'] == hotel_name:
+                    print(x)
+            else:
+                print(f"Hotel {hotel_name} does not exist.")
+
+        save_file(self.FILE, hotels_data)
+        
+
+    def modify_hotel(self, hotel_id, new_hotel_name):
+        hotels_data = load_file(self.FILE)
+        
+        for x in hotels_data:
+            hotel_exists = any(x['id'] == hotel_id for hotel in hotels_data)
+
+            if hotel_exists:
+               if x['id'] == hotel_id:
+                    hotels_data.update({'name': new_hotel_name})
+            else:
+                print(f"Hotel {hotel_id} does not exist.")
+
+        save_file(self.FILE, hotels_data)
 
 
 #Customer Classes 
@@ -122,5 +156,7 @@ input_file = parser.parse_args()
 hotel_admin = ManageHotel(input_file.hotel_file)
 reserv_admin = ManageReservation(input_file.reserv_file)
 cust_admin = ManageCustomer(input_file.customer_file)
+
+
 
 
