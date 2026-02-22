@@ -57,11 +57,11 @@ class ManageHotel:
         hotel_exists = any(h['hotel_id'] == hotel_id for h in hotels_data)
 
         if hotel_exists:
-            for x in enumerate(hotels_data):
+            for x, hotel in enumerate(hotels_data):
 
-                if hotels_data[x]['hotel_id'] == hotel_id:
+                if hotel['hotel_id'] == hotel_id:
                     hotels_data.pop(x)
-                break
+                    break
         else:
             print(f"Customer {hotel_id} does not exist.")
 
@@ -74,11 +74,11 @@ class ManageHotel:
         hotel_exists = any(h['name'] == hotel_name for h in hotels_data)
 
         if hotel_exists:
-            for x in enumerate(hotels_data):
+            for x, hotel in enumerate(hotels_data):
 
-                if hotels_data[x]['name'] == hotel_name:
+                if hotel['name'] == hotel_name:
                     print(x)
-                break
+                    break
         else:
             print(f"Customer {hotel_name} does not exist.")
 
@@ -89,11 +89,11 @@ class ManageHotel:
         hotel_exists = any(h['hotel_id'] == hotel_id for h in hotels_data)
 
         if hotel_exists:
-            for x in enumerate(hotels_data):
+            for _, hotel in enumerate(hotels_data):
 
-                if hotels_data[x]['hotel_id'] == hotel_id:
-                    hotels_data[x].update({"name": new_hotel_name})
-                break
+                if hotel['hotel_id'] == hotel_id:
+                    hotel['name'] = new_hotel_name
+                    break
         else:
             print(f"Customer {hotel_id} does not exist.")
 
@@ -132,11 +132,11 @@ class ManageCustomer:
         cust_exists = any(c['customer_id'] == cust_id for c in cust_data)
 
         if cust_exists:
-            for x in enumerate(cust_data):
+            for x, customer in enumerate(cust_data):
 
-                if cust_data[x]['customer_id'] == cust_id:
+                if customer['customer_id'] == cust_id:
                     cust_data.pop(x)
-                break
+                    break
         else:
             print(f"Customer {cust_id} does not exist.")
 
@@ -149,11 +149,11 @@ class ManageCustomer:
         cust_exists = any(c['customer_id'] == cust_id for c in cust_data)
 
         if cust_exists:
-            for x in enumerate(cust_data):
+            for x, customer in enumerate(cust_data):
 
-                if cust_data[x]['customer_id'] == cust_id:
+                if customer['customer_id'] == cust_id:
                     print(x)
-                break
+                    break
         else:
             print(f"Customer {cust_id} does not exist.")
 
@@ -164,12 +164,12 @@ class ManageCustomer:
         cust_exists = any(c['customer_id'] == cust_id for c in cust_data)
 
         if cust_exists:
-            for x in enumerate(cust_data):
+            for _, customer in enumerate(cust_data):
 
-                if cust_data[x]['customer_id'] == cust_id:
-                    cust_data[x].update({"customer_name": new_name,
-                                        "email": new_email})
-                break
+                if customer['customer_id'] == cust_id:
+                    customer['customer_name'] = new_name
+                    customer['email'] = new_email
+                    break
         else:
             print(f"Customer {cust_id} does not exist.")
 
@@ -217,11 +217,11 @@ class ManageReservation:
                            in resrv_data)
 
         if resrv_exists:
-            for x in enumerate(resrv_data):
+            for x, reservation in enumerate(resrv_data):
 
-                if resrv_data[x]['hotel_id'] == resrv_id:
+                if reservation['reservation_id'] == resrv_id:
                     resrv_data.pop(x)
-                break
+                    break
         else:
             print(f"Customer {resrv_id} does not exist.")
 
