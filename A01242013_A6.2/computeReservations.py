@@ -23,4 +23,17 @@ class StandardHotel(Hotel):
         return self.__dict__
     
 
+class ManageHotel:
+
+    def create_hotel():
+        pass 
+
+    def delete_hotel():
+        pass
+
+    def hotel_info():
+        pass
+
+    def modify_hotel():
+        pass
 
