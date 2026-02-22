@@ -1,14 +1,14 @@
 [
     {
         "hotel_id": 1,
-        "name": "Hilton"
+        "name": "Holiday Inn"
     },
     {
         "hotel_id": 2,
         "name": "Fiesta Inn"
     },
     {
-        "hotel_id": 3,
-        "name": "City Express"
+        "hotel_id": 4,
+        "name": "Hotel Maria Bonita"
     }
 ]

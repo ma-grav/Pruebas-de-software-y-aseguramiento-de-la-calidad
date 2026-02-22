@@ -1,0 +1,17 @@
+[
+    {
+        "customer_id": 1,
+        "customer_name": "Ximena Aguilar",
+        "email": "ximena.flor15@gmail.com"
+    },
+    {
+        "customer_id": 3,
+        "customer_name": "Mariana Bello",
+        "email": "maribello@hotmail.com"
+    },
+    {
+        "customer_id": 4,
+        "customer_name": "Alicia Aguilar",
+        "email": "ali_aguilar16@gmail.com"
+    }
+]

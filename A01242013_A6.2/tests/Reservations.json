@@ -12,9 +12,9 @@
         "hotel_id": 2
     },
     {
-        "reservation_id": 3,
-        "room_num": "120",
-        "customer_id": 3,
-        "hotel_id": 3
+        "reservation_id": 4,
+        "room_num": "180",
+        "customer_id": 4,
+        "hotel_id": 4
     }
 ]
