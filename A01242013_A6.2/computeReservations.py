@@ -37,6 +37,7 @@ class ManageHotel:
     def modify_hotel():
         pass
 
+
 #Customer Classes 
 class Customer:
     def __init__(self, customer_id, customer_name, customer_email):
@@ -59,4 +60,33 @@ class ManageCustomer:
         pass
 
     def modify_customer():
+        pass
+
+
+#Reservation Classes 
+class Reservation(ABC):
+
+    @abstractmethod
+    def to_dictionary(self):
+        pass
+
+
+class RoomReservation(Reservation):
+
+    def __init__(self, reservation_id, room_num, customer_id, hotel_id):
+        self.reservation_id = reservation_id
+        self.room_num = room_num
+        self.customer_id = customer_id
+        self.hotel_id = hotel_id
+
+    def to_dictionary(self):
+        return self.__dict__
+    
+
+class ManageReservation:
+
+    def new_reservation():
+        pass 
+
+    def cancel_reservation():
         pass
