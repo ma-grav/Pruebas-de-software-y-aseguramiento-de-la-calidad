@@ -181,10 +181,23 @@ class ManageReservation:
         self.FILE = f
 
     def new_reservation(self, new_resrv):
-        pass
+        resrv_data = load_file(self.FILE)
+        resrv_data.append(new_resrv)
+        save_file(self.FILE, resrv_data)
 
-    def cancel_reservation():
-        pass
+    def cancel_reservation(self, resrv_id):
+        resrv_data = load_file(self.FILE)
+        
+        for x in resrv_data:
+            resrv_exists = any(x['reservation_id'] == resrv_id for reservation in resrv_data)
+
+            if resrv_exists:
+               if x['reservation_id'] == resrv_id:
+                    resrv_data.pop(x)
+            else:
+                print(f"Reservation {resrv_id} does not exist.")
+
+        save_file(self.FILE, resrv_data)
 
 
 
