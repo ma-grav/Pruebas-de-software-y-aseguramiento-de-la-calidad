@@ -37,16 +37,22 @@ class StandardHotel(Hotel):
 
 class ManageHotel:
 
-    def create_hotel():
-        pass 
+    def __init__(self, f):
+        self.FILE = f
 
-    def delete_hotel():
+    def create_hotel(self, new_hotel):
+        hotels_data = load_file(self.FILE)
+        hotels_data.append(new_hotel)
+        save_file(self.FILE, hotels_data)
+
+
+    def delete_hotel(self):
         pass
 
-    def hotel_info():
+    def hotel_info(self):
         pass
 
-    def modify_hotel():
+    def modify_hotel(self):
         pass
 
 
