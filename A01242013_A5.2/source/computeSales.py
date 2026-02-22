@@ -1,9 +1,9 @@
+#pylint: disable=invalid-name
+"Program computes total sales from two files given"
+
 import argparse
 import time
 import json
-
-"Program computes total sales from two files given"
-
 
 def calc_total_sales(products, sales):
     "Function to calculate total sales"
