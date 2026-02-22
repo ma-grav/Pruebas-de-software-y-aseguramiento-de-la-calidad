@@ -47,3 +47,16 @@ class Customer:
     def to_dictionary(self):
         return self.__dict__
 
+class ManageCustomer:
+     
+    def create_customer():
+        pass 
+
+    def delete_customer():
+        pass
+
+    def customer_info():
+        pass
+
+    def modify_customer():
+        pass
