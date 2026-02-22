@@ -1,9 +1,21 @@
 import argparse
 from abc import ABC, abstractmethod
+import json
 
 #pylint: disable=invalid-name
 
 "Program that manages Hotels and their inherent activities"
+
+def load_file(file):
+    with open(input_file.file, "r", encoding="utf-8") as f:
+        file_dict = json.load(f)
+    
+    return file_dict
+
+def save_file(d):
+    with open(input_file.file, "w", encoding="utf-8") as f:
+        json.dump(d, f, indent=4)
+
 
 #Hotel Classes 
 class Hotel(ABC):
@@ -40,6 +52,7 @@ class ManageHotel:
 
 #Customer Classes 
 class Customer:
+    
     def __init__(self, customer_id, customer_name, customer_email):
         self.customer_id = customer_id
         self.customer_name = customer_name
@@ -90,3 +103,18 @@ class ManageReservation:
 
     def cancel_reservation():
         pass
+
+
+
+parser = argparse.ArgumentParser(description="Process hotel files")
+parser.add_argument("hotel_file", help="Name of the hotels file")
+parser.add_argument("reserv_file", help="Name of the reservations file")
+parser.add_argument("customer_file", help="Name of the customers file")
+
+input_file = parser.parse_args()
+
+hotel_admin = ManageHotel(input_file.hotel_file)
+reserv_admin = ManageReservation(input_file.reserv_file)
+cust_admin = ManageCustomer(input_file.customer_file)
+
+
