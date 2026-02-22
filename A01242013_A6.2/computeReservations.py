@@ -102,18 +102,57 @@ class Customer:
         return self.__dict__
 
 class ManageCustomer:
-     
-    def create_customer():
-        pass 
 
-    def delete_customer():
-        pass
+    def __init__(self, f):
+        self.FILE = f
 
-    def customer_info():
-        pass
+    def create_customer(self, new_cust):
+        cust_data = load_file(self.FILE)
 
-    def modify_customer():
-        pass
+        cust_data.append()
+        save_file(self.FILE, cust_data)
+
+    def delete_customer(self, cust_id):
+        cust_data = load_file(self.FILE)
+        
+        for x in cust_data:
+            cust_exists = any(x['customer_id'] == cust_id for customer in cust_data)
+
+            if cust_exists:
+               if x['customer_id'] == cust_id:
+                    cust_data.pop(x)
+            else:
+                print(f"Customer {cust_id} does not exist.")
+
+        save_file(self.FILE, cust_data)
+
+    def customer_info(self, cust_id):
+        cust_data = load_file(self.FILE)
+        
+        for x in cust_data:
+            cust_exists = any(x['customer_id'] == cust_id for customer in cust_data)
+
+            if cust_exists:
+               if x['customer_id'] == cust_id:
+                    print(x)
+            else:
+                print(f"Customer {cust_id} does not exist.")
+
+        save_file(self.FILE, cust_data)
+
+    def modify_customer(self, cust_id, new_name, new_email):
+        cust_data = load_file(self.FILE)
+        
+        for x in cust_data:
+            cust_exists = any(x['customer_id'] == cust_id for customer in cust_data)
+
+            if cust_exists:
+               if x['customer_id'] == cust_id:
+                    cust_data.cust_data.update({'customer_name': new_name}, {'email': new_email})
+            else:
+                print(f"Customer {cust_id} does not exist.")
+
+        save_file(self.FILE, cust_data)
 
 
 #Reservation Classes 
@@ -138,8 +177,11 @@ class RoomReservation(Reservation):
 
 class ManageReservation:
 
-    def new_reservation():
-        pass 
+    def __init__(self, f):
+        self.FILE = f
+
+    def new_reservation(self, new_resrv):
+        pass
 
     def cancel_reservation():
         pass
