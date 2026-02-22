@@ -1,20 +1,20 @@
 [
-  {
-    "reservation_id": 1,
-    "room_num": "50",
-    "customer_id": 3,
-    "hotel_id": 1
-  },
-  {
-    "reservation_id": 2,
-    "room_num": "80",
-    "customer_id": 1,
-    "hotel_id": 2
-  },
-  {
-    "reservation_id": 2,
-    "room_num": "120",
-    "customer_id": 3,
-    "hotel_id": 3
-  }
+    {
+        "reservation_id": 1,
+        "room_num": "50",
+        "customer_id": 3,
+        "hotel_id": 1
+    },
+    {
+        "reservation_id": 2,
+        "room_num": "80",
+        "customer_id": 1,
+        "hotel_id": 2
+    },
+    {
+        "reservation_id": 3,
+        "room_num": "120",
+        "customer_id": 3,
+        "hotel_id": 3
+    }
 ]

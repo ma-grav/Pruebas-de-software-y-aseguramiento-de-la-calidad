@@ -1,17 +1,17 @@
 [
-  {
-    "customer_id": 1,
-    "customer_name": "Ana Aguilar",
-    "email": "ana_aguilar@gmail.com"
-  },
-  {
-    "customer_id": 2,
-    "customer_name": "Ricardo Cruz",
-    "email": "ric.cruz28@outlook.com"
-  },
-  {
-    "customer_id": 3,
-    "customer_name": "Mariana Bello",
-    "email": "maribello@hotmail.com"
-  }
+    {
+        "customer_id": 1,
+        "customer_name": "Ana Aguilar",
+        "email": "ana_aguilar@gmail.com"
+    },
+    {
+        "customer_id": 2,
+        "customer_name": "Ricardo Cruz",
+        "email": "ric.cruz28@outlook.com"
+    },
+    {
+        "customer_id": 3,
+        "customer_name": "Mariana Bello",
+        "email": "maribello@hotmail.com"
+    }
 ]

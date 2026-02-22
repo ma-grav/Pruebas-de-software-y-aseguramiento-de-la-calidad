@@ -50,20 +50,20 @@ class ManageHotel:
         hotels_data.append(new_hotel)
         save_file(self.file, hotels_data)
 
-    def delete_hotel(self, hotel_name):
+    def delete_hotel(self, hotel_id):
         """Function delete a hotel"""
         hotels_data = load_file(self.file)
 
-        hotel_exists = any(h['name'] == hotel_name for h in hotels_data)
+        hotel_exists = any(h['hotel_id'] == hotel_id for h in hotels_data)
 
         if hotel_exists:
             for x in enumerate(hotels_data):
 
-                if hotels_data[x]['name'] == hotel_name:
+                if hotels_data[x]['hotel_id'] == hotel_id:
                     hotels_data.pop(x)
                 break
         else:
-            print(f"Customer {hotel_name} does not exist.")
+            print(f"Customer {hotel_id} does not exist.")
 
         save_file(self.file, hotels_data)
 
