@@ -4,7 +4,7 @@ import argparse
 from abc import ABC, abstractmethod
 import json
 
-#pylint: disable=too-few-public-methods
+# pylint: disable=too-few-public-methods
 
 
 def load_file(file_path):
@@ -14,13 +14,14 @@ def load_file(file_path):
 
     return file_dict
 
+
 def save_file(file_path, d):
     """Function to save a file, used in multiple classes"""
     with open(file_path, "w", encoding="utf-8") as f:
         json.dump(d, f, indent=4)
 
 
-#Hotel Classes
+# Hotel Classes
 class Hotel(ABC):
     """Abstract class for hotels"""
     @abstractmethod
@@ -50,13 +51,12 @@ class ManageHotel:
         hotels_data.append(new_hotel)
         save_file(self.file, hotels_data)
 
-
     def delete_hotel(self, hotel_name):
         """Function delete a hotel"""
         hotels_data = load_file(self.file)
 
         for x in hotels_data:
-            hotel_exists = any(x['name'] == hotel_name for hotel in hotels_data)
+            hotel_exists = any(x['name'] == hotel_name for h in hotels_data)
 
             if hotel_exists:
                 if x['name'] == hotel_name:
@@ -71,14 +71,13 @@ class ManageHotel:
         hotels_data = load_file(self.file)
 
         for x in hotels_data:
-            hotel_exists = any(x['name'] == hotel_name for hotel in hotels_data)
+            hotel_exists = any(x['name'] == hotel_name for h in hotels_data)
 
             if hotel_exists:
                 if x['name'] == hotel_name:
                     print(x)
             else:
                 print(f"Hotel {hotel_name} does not exist.")
-
 
     def modify_hotel(self, hotel_id, new_hotel_name):
         """Function modify a hotel's data"""
@@ -96,7 +95,7 @@ class ManageHotel:
         save_file(self.file, hotels_data)
 
 
-#Customer Classes
+# Customer Classes
 class Customer:
     """Class that handles the methods needed for the customers"""
     def __init__(self, customer_id, customer_name, customer_email):
@@ -107,6 +106,7 @@ class Customer:
     def to_dictionary(self):
         """Function to return its own dictionary"""
         return self.__dict__
+
 
 class ManageCustomer:
     """Class that handles the management of the customers data"""
@@ -125,7 +125,7 @@ class ManageCustomer:
         cust_data = load_file(self.file)
 
         for x in cust_data:
-            cust_exists = any(x['customer_id'] == cust_id for customer in cust_data)
+            cust_exists = any(x['customer_id'] == cust_id for c in cust_data)
 
             if cust_exists:
                 if x['customer_id'] == cust_id:
@@ -140,7 +140,7 @@ class ManageCustomer:
         cust_data = load_file(self.file)
 
         for x in cust_data:
-            cust_exists = any(x['customer_id'] == cust_id for customer in cust_data)
+            cust_exists = any(x['customer_id'] == cust_id for c in cust_data)
 
             if cust_exists:
                 if x['customer_id'] == cust_id:
@@ -148,24 +148,24 @@ class ManageCustomer:
             else:
                 print(f"Customer {cust_id} does not exist.")
 
-
     def modify_customer(self, cust_id, new_name, new_email):
         """Function to modify a customer's data"""
         cust_data = load_file(self.file)
 
         for x in cust_data:
-            cust_exists = any(x['customer_id'] == cust_id for customer in cust_data)
+            cust_exists = any(x['customer_id'] == cust_id for c in cust_data)
 
             if cust_exists:
                 if x['customer_id'] == cust_id:
-                    cust_data.cust_data.update({'customer_name': new_name}, {'email': new_email})
+                    cust_data.cust_data.update({'customer_name': new_name},
+                                               {'email': new_email})
             else:
                 print(f"Customer {cust_id} does not exist.")
 
         save_file(self.file, cust_data)
 
 
-#Reservation Classes
+# Reservation Classes
 class Reservation(ABC):
     """Abstract class for reservations"""
     @abstractmethod
@@ -203,7 +203,8 @@ class ManageReservation:
         resrv_data = load_file(self.file)
 
         for x in resrv_data:
-            resrv_exists = any(x['reservation_id'] == resrv_id for reservation in resrv_data)
+            resrv_exists = any(x['reservation_id'] == resrv_id for r
+                               in resrv_data)
 
             if resrv_exists:
                 if x['reservation_id'] == resrv_id:
@@ -212,7 +213,6 @@ class ManageReservation:
                 print(f"Reservation {resrv_id} does not exist.")
 
         save_file(self.file, resrv_data)
-
 
 
 parser = argparse.ArgumentParser(description="Process hotel files")
