@@ -37,3 +37,13 @@ class ManageHotel:
     def modify_hotel():
         pass
 
+#Customer Classes 
+class Customer:
+    def __init__(self, customer_id, customer_name, customer_email):
+        self.customer_id = customer_id
+        self.customer_name = customer_name
+        self.email = customer_email
+
+    def to_dictionary(self):
+        return self.__dict__
+
